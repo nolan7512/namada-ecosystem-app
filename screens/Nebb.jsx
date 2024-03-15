@@ -169,7 +169,7 @@ const Nebb = () => {
                         <Text style={styles.labelText}>ROIDS</Text>
                     </View>
                     {/* <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Text style={styles.labelText}>VP</Text>
+                <Text style={styles.labelText}>VP *bdd305afe971a9595806efdbc8616a3</Text> 
             </View> */}
                 </View>
                 <View style={{ flex: 1 }}>
@@ -212,6 +212,7 @@ const Nebb = () => {
                         <Text style={styles.labelText}>ROIDS</Text>
                     </View>
                     {/* <View style={{ flex: 1, justifyContent: 'center' }}>
+                    //Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3
                 <Text style={styles.labelText}>VP</Text>
             </View> */}
                 </View>
@@ -307,9 +308,11 @@ const styles = StyleSheet.create({
         fontSize: 13,
         color: '#FFFF00',
     },
+    //Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3
     valueIcon: {
         fontSize: 18,
         color: '#FFFF00',
     },
 });
 export default Nebb;
+//Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3

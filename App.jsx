@@ -18,7 +18,7 @@ const App = () => {
     colors: {
       primary: '#FFFF00', // Màu chữ
       background: '#000000', // Màu nền
-      card: '#000000',
+      card: '#000000', //*bdd305afe971a9595806efdbc8616a3
       text: '#FFFF00', // Màu chữ
       border: '#FFFF00', // Màu chữ cho đường viền
     },
@@ -46,6 +46,7 @@ const App = () => {
             }
 
             // Trả về component Icon với tên icon và thuộc tính size và color
+            //Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3
             return <Icon name={iconName} size={25} color="#FFFF00" />;
           },
           tabBarActiveTintColor: '#FFFF00',

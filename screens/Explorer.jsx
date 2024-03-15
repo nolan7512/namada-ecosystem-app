@@ -138,6 +138,7 @@ const ListItemBlocks = ({ item }) => {
             </View>
 
             {/* <View style={{ flex: 1, justifyContent: 'left', alignItems: 'left' }}>
+            //Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3
                 <Image
                     source={{ uri: item.logo_url || 'https://i.imgur.com/kbD9hHK.png' }}
                     style={{ width: 25, height: 25, borderRadius: 20 }}
@@ -316,11 +317,12 @@ const styles = StyleSheet.create({
         color: '#FFFFFF', // Màu chữ mặc định
         marginBottom: 20,
     },
+    //Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3
     description: {
         fontSize: 16,
         textAlign: 'center',
         marginBottom: 10,
-        color: '#FFFFFF',
+        color: '#FFFFFF', //Hash : cbdd305afe971a9595806efdbc8616a3
     },
     descriptionsub: {
         fontSize: 14,
@@ -334,7 +336,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     techBox: {
-        backgroundColor: '#61dafb', // Màu nền hộp tech
+        backgroundColor: '#61dafb', // Màu nền hộp tech Hash : cbdd305afe971a9595806efdbc8616a3
         borderRadius: 5,
         padding: 5,
         margin: 5,

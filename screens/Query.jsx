@@ -342,6 +342,7 @@ const Nebb = () => {
             const response = await axios.get(`https://it.api.namada.red/api/v1/player/search/${playerAddress}?player_kind=Crew`);
             const data = response.data.players;
             // console.log("API Response:", data); // Log phản hồi từ API
+            //Hash : cbdd305afe971a9595806efdbc8616a3
             setPlayerData(data); // Gán dữ liệu vào state
         } catch (error) {
             console.error('Error fetching crew data:', error); // Log lỗi nếu có
@@ -379,6 +380,7 @@ const Nebb = () => {
             const seMonikerFinal = seMonikerLines.join('\n').trim();
             let extractedData_split = [];
             // Kiểm tra xem data có tồn tại và có phải là mảng không
+            //Hash : cbdd305afe971a9595806efdbc8616a3
             if (Array.isArray(seMonikerLines) && seMonikerLines.length > 0) {
                 seMonikerLines.forEach(item => {
                     // Kiểm tra xem item có tồn tại và có thể chia thành mảng không
@@ -395,6 +397,7 @@ const Nebb = () => {
             } else {
                 console.error('Invalid data: Expected non-empty array but received', data);
             }
+            //Hash : cbdd305afe971a9595806efdbc8616a3
             // console.log(extractedData_split);
             // extractedData.push(<Text key="seMoniker">SE-moniker/class: {seMonikerFinal}</Text>);
             // Hiển thị thông tin tương ứng
@@ -464,12 +467,11 @@ const Nebb = () => {
         if (text.startsWith("tnam") && text.length === 45) {
             setInputType("wallet");
             return "wallet";
-        } else 
-        {
+        } else {
             return "error";
         }
     };
-    
+
     const handleSearch = async () => {
         const inputTypeSearch = detectInputType(searchText);
         if (inputTypeSearch === "player") {
@@ -479,7 +481,7 @@ const Nebb = () => {
             // Xử lý nếu đầu vào là loại "hash"
             fetchTransactionData(searchText);
         }
-        else{
+        else {
             Toast.show('Please Enter (tx hash | tnam | tpknam)', Toast.SHORT);
         }
     };
@@ -488,9 +490,9 @@ const Nebb = () => {
         if (inputTypeSearch === "wallet") {
             // Xử lý nếu đầu vào là loại "wallet"
             fetchDataWallet(searchText);
-        } else  {
+        } else {
             Toast.show('Please Enter Wallet (tnam...)', Toast.SHORT);
-           
+
         }
     };
 
@@ -498,7 +500,7 @@ const Nebb = () => {
     //     console.log("Data thay doi ");
     //     console.log(playerData);
     // }, [playerData]);
-
+    //Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3
     const clearSearchText = () => {
         setSearchText('');
     };
@@ -541,14 +543,17 @@ const Nebb = () => {
                         style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 10, padding: 5, backgroundColor: '#FFFF00', borderRadius: 5 }}
                         onPress={handleSearch}
                     >
-                        <Icon name="search" size={25} color="#000" />
+                        <View style={{  alignItems: 'center', justifyContent: "center", flexDirection: "row" }}>
+                            <Text style={{ alignItems: 'center', justifyContent: 'center', color: "#000" }}>Search  </Text>
+                            <Icon name="search" size={25} color="#000" />
+                        </View>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 10, padding: 5, backgroundColor: '#FFFF00', borderRadius: 5 }}
                         onPress={handleTrackingWallet}
                     >
-                        <View style={{ flex: 1, alignItems: 'center', justifyContent: "center", flexDirection: "row"}}>
-                            <Text style={{ alignItems: 'center', justifyContent: 'center', color: "#000" }}>Tracking</Text>
+                        <View style={{  alignItems: 'center', justifyContent: "center", flexDirection: "row" }}>
+                            <Text style={{ alignItems: 'center', justifyContent: 'center', color: "#000" }}>Tracking  </Text>
                             <Icon name="account-balance-wallet" size={25} color="#000" />
                         </View>
                     </TouchableOpacity>
@@ -636,6 +641,7 @@ const styles = StyleSheet.create({
         color: '#FFFF00', // Chữ màu vàng
         marginRight: 5,
     },
+    //Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3
     subheader: {
         fontSize: 18,
         color: '#FFFFFF', // Màu chữ mặc định
@@ -665,7 +671,7 @@ const styles = StyleSheet.create({
         margin: 5,
     },
     techText: {
-        color: '#FFFFFF', // Màu chữ trắng
+        color: '#FFFFFF', // Màu chữ trắng  Hash : cbdd305afe971a9595806efdbc8616a3
     },
     textContainer: {
         flexDirection: 'row',

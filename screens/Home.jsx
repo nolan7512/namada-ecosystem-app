@@ -177,7 +177,7 @@ const Home = () => {
                 <Text style={styles.header}>
                     Namada Explorer App - AdamanLabs
                 </Text>
-
+                {/* //Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3 */}
                 {/* <Text style={styles.subheader}>
                 Namada Shielded Expedition
             </Text> */}
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     header: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#FFFF00' // Chữ màu vàng
+        color: '#FFFF00' // Chữ màu vàng Hash : cbdd305afe971a9595806efdbc8616a3
     },
     subheader: {
         fontSize: 18,
@@ -266,6 +266,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         color: '#FFFFFF',
     },
+    //Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3
     descriptionsub: {
         fontSize: 14,
         textAlign: 'center',
@@ -311,3 +312,4 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
+//Copyright (c) 2024-15-03 AdamanLabs. All rights reserved. Hash : cbdd305afe971a9595806efdbc8616a3

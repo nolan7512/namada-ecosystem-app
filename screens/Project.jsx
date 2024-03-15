@@ -20,6 +20,7 @@ const Project = () => {
 
 				{/* <Text style={styles.subheader}>
                 Namada Shielded Expedition
+				cbdd305afe971a9595806efdbc8616a3
             </Text> */}
 				<Text style={styles.description}>
 					We are a team of enthusiastic young people, this is the first "competition" that our team has participated in. Desire to accompany and contribute to the Namada community.
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center',
+		alignItems: 'center', //Hash : cbdd305afe971a9595806efdbc8616a3
 		padding: 20,
 		backgroundColor: "#000000" // Sử dụng màu nền từ theme
 
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 		textAlign: 'center',
 		marginBottom: 20,
-		color: '#FFFFFF',
+		color: '#FFFFFF',//cbdd305afe971a9595806efdbc8616a3
 	},
 	techContainer: {
 		flexDirection: 'row',
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
 	valueText: {
 		flex: 1, // Sử dụng phần còn lại của không gian
 		fontSize: 16,
-		color: '#FFFFFF',
+		color: '#FFFFFF', //Hash : cbdd305afe971a9595806efdbc8616a3
 	},
 	valueIcon: {
 		fontSize: 18,
