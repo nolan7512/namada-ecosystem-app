@@ -99,13 +99,17 @@ const ListPilot = ({ item }) => {
 const Nebb = () => {
     const [crew, setCrew] = useState([]);
     const [pilot, setPilot] = useState([]);
-    const [numberItemGet, setnumberItemGet] = useState(50); // Initial fetch timer value in seconds
+    const [numberItemGet, setnumberItemGet] = useState(100); // Initial fetch timer value in seconds
+    const [isLoadingPilots, setIsLoadingPilots] = useState(true); // Initial loading state for pilots
+    const [isLoadingCrew, setIsLoadingCrew]= useState(true); // Initial loading state for crew
+
 
     const fetchPilotsData = async () => {
         try {
             const response = await axios.get(API_PILOTS, { timeout: 600000 });
             const data = response.data.players.slice(0, numberItemGet);
             setPilot(data);
+            setIsLoadingPilots(false);
             console.log(data)
         } catch (error) {
             console.error('Error fetching pilots data:', error);
@@ -114,9 +118,10 @@ const Nebb = () => {
 
     const fetchCrewData = async () => {
         try {
-            const response = await axios.get(API_CREW,  { timeout: 600000 });
+            const response = await axios.get(API_CREW, { timeout: 600000 });
             const data = response.data.players.slice(0, numberItemGet);
             setCrew(data);
+            setIsLoadingCrew(false);
             console.log(data)
         } catch (error) {
             console.error('Error fetching crew data:', error);
@@ -127,10 +132,17 @@ const Nebb = () => {
         fetchPilotsData();
     }, []);
 
+    const renderLoading = () => {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={styles.valueText} >Fetching data, please wait...</Text>
+            </View>
+        );
+    };
     return (
 
         <View style={{ width: "100%", height: "100%" }} >
-            <View style={{flex : 1}}>
+            <View style={{ flex: 1 }}>
                 <Text style={styles.header}>
                     Top Pilot
                 </Text>
@@ -153,24 +165,26 @@ const Nebb = () => {
                     <View style={{ flex: 2, justifyContent: 'center' }}>
                         <Text style={styles.labelText}>Addr</Text>
                     </View>
-                    <View style={{ flex: 2, justifyContent: 'center', alignItems:"flex-end" }}>
+                    <View style={{ flex: 2, justifyContent: 'center', alignItems: "flex-end" }}>
                         <Text style={styles.labelText}>ROIDS</Text>
                     </View>
                     {/* <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Text style={styles.labelText}>VP</Text>
             </View> */}
                 </View>
-                <View   style={{flex : 1}} >
-                    <FlatList nestedScrollEnabled
-                        contentContainerStyle={{
-                            flexGrow: 1,
-                        }}
-                        data={pilot}
-                        renderItem={({ item }) => <ListPilot item={item} />}
-                        keyExtractor={(item, index) => index.toString()}
-                    />
+                <View style={{ flex: 1 }}>
+                    {isLoadingPilots ? (
+                        renderLoading()
+                    ) : (
+                        <FlatList
+                            nestedScrollEnabled
+                            contentContainerStyle={{ flexGrow: 1 }}
+                            data={pilot}
+                            renderItem={({ item }) => <ListPilot item={item} />}
+                            keyExtractor={(item, index) => index.toString()}
+                        />
+                    )}
                 </View>
-
 
                 <Text style={styles.header}>
                     Top Crew
@@ -194,21 +208,29 @@ const Nebb = () => {
                     <View style={{ flex: 2, justifyContent: 'center' }}>
                         <Text style={styles.labelText}>Addr</Text>
                     </View>
-                    <View style={{ flex: 2, justifyContent: 'center', alignItems:"flex-end" }}>
+                    <View style={{ flex: 2, justifyContent: 'center', alignItems: "flex-end" }}>
                         <Text style={styles.labelText}>ROIDS</Text>
                     </View>
                     {/* <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Text style={styles.labelText}>VP</Text>
             </View> */}
                 </View>
-                <View  style={{flex : 1}} >
-                    <FlatList nestedScrollEnabled
+               
+                <View style={{ flex: 1 }} >
+                {isLoadingCrew ? (
+                        renderLoading()
+                    ) : (
+                        <FlatList nestedScrollEnabled
 
                         data={crew}
                         renderItem={({ item }) => <ListCrew item={item} />}
                         keyExtractor={(item, index) => index.toString()}
                     />
+                    )}
+                    
                 </View>
+
+                
 
             </View>
         </View>

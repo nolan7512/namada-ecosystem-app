@@ -6,6 +6,7 @@ import Home from './screens/Home';
 import Projects from './screens/Project';
 import Nebb from './screens/Nebb';
 import Explorer from './screens/Explorer';
+import Query from './screens/Query';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +24,7 @@ const App = () => {
     },
   };
   return (
-    <NavigationContainer theme={customTheme}>
+    <NavigationContainer theme={customTheme} style={{ marginVertical: 10 }}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -32,15 +33,15 @@ const App = () => {
             if (route.name === 'Namada') {
               iconName = focused ? 'home' : 'home';
             } else if (route.name === 'Explorer') {
-              iconName = focused ? 'info' : 'info';
+              iconName = focused ? 'explore' : 'explore';
             }
             else if (route.name === 'Nebb') {
               iconName = focused ? 'api' : 'api';
             }
             else if (route.name === 'Query') {
-              iconName = focused ? 'explore' : 'explore';
+              iconName = focused ? 'search' : 'search';
             }
-            else if (route.name === 'Command') {
+            else if (route.name === 'About us') {
               iconName = focused ? 'keyboard-command' : 'keyboard-command';
             }
 
@@ -51,7 +52,7 @@ const App = () => {
           tabBarInactiveTintColor: '#FFFFFF',
           tabBarLabelStyle: {
             fontSize: 15,
-            fontWeight: 'bold',           
+            fontWeight: 'bold',
           },
           tabBarStyle: {
             display: 'flex',
@@ -61,8 +62,8 @@ const App = () => {
         <Tab.Screen name="Namada" component={Home} />
         <Tab.Screen name="Explorer" component={Explorer} />
         <Tab.Screen name="Nebb" component={Nebb} />
-        <Tab.Screen name="Query" component={Projects} />
-        <Tab.Screen name="Command" component={Projects} />
+        <Tab.Screen name="Query" component={Query} />
+        <Tab.Screen name="About us" component={Projects} />
       </Tab.Navigator>
     </NavigationContainer>
   );
