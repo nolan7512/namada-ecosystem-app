@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, Text, View, StyleSheet, Image } from 'react-native';
 import axios from 'axios';
-import cheerio from 'cheerio';
+
 
 const Project = () => {
 	return (

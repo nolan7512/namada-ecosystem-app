@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput, Button, KeyboardAvoidingView } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput, Button, KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/MaterialIcons'; // Import thư viện icon MaterialIcons
 import Toast from 'react-native-simple-toast';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import cheerio from 'cheerio';
+// const cheerio = require('react-native-cheerio')
 
 const ShowPlayer = ({ playerData }) => {
     const copyToClipboard = (itemtext) => {
@@ -63,126 +63,6 @@ const ShowTransaction = ({ transaction }) => {
     };
     console.log(transaction)
 
-    //     if (!transaction || !transaction.tx) {
-    //         return null;
-    //     }
-
-    //     try {
-    //         return (
-    //             <ScrollView>
-    //                 {Object.keys(transaction.tx).map((txType, index) => (
-    //                     <View key={index} style={styles.txContainer}>
-    //                         <Text style={styles.txHeader}>{txType}</Text>
-    //                         {Object.entries(transaction.tx[txType]).map(([key, value], idx) => {
-    //                             const displayValue = typeof value === 'string' && value.length > 100 ? `${value.slice(0, 100)}...` : value;
-    //                             return (
-    //                                 <View key={idx} style={styles.txRow}>
-    //                                     <Text style={styles.txLabel}>{key}:</Text>
-    //                                     {/* Check if value is not null before rendering */}
-    //                                     {value !== null && typeof value === 'object' ? (
-    //                                         Object.entries(value).map(([subKey, subValue], subIdx) => {
-    //                                             const truncatedSubValue = typeof subValue === 'string' && subValue.length > 50 ? `${subValue.slice(0, 50)}...` : subValue;
-    //                                             // Check if subValue is an array and has more than 10 elements
-    //                                             if (Array.isArray(subValue) && subValue.length > 10) {
-    //                                                 return (
-    //                                                     <Text key={subIdx} style={styles.txValue}>{`${subKey}: ${subValue.join(', ')}`}</Text>
-    //                                                 );
-    //                                             } else {
-    //                                                 return (
-    //                                                     <Text key={subIdx} style={styles.txValue}>{`${subKey}: ${truncatedSubValue}`}</Text>
-    //                                                 );
-    //                                             }
-    //                                         })
-    //                                     ) : (
-    //                                         <Text style={styles.txValue}>
-    //                                             {typeof value === 'string' && value.length > 100 ? `${value.slice(0, 100)}...` : value}
-    //                                         </Text>
-    //                                     )}
-    //                                 </View>
-    //                             );
-    //                         })}
-    //                     </View>
-    //                 ))}
-    //             </ScrollView>
-    //         );
-    //     } catch (error) {
-    //         console.error('Error rendering transaction details:', error);
-    //         return null;
-    //     }
-    // };
-
-
-    //gần đúng
-    // const renderTxDetails = () => {
-    //     if (!transaction || !transaction.tx) {
-    //         return null;
-    //     }
-
-    //     try {
-    //         return (
-    //             <ScrollView>
-    //                 {Object.keys(transaction.tx).map((txType, index) => (
-    //                     <View key={index} style={styles.txContainer}>
-    //                         <Text style={styles.txHeader}>{txType}</Text>
-    //                         {Object.entries(transaction.tx[txType]).map(([key, value], idx) => {
-    //                             const displayValue = typeof value === 'string' && value.length > 100 ? `${value.slice(0, 100)}...` : value;
-    //                             return (
-    //                                 <View key={idx} style={styles.txRow}>
-    //                                     <Text style={styles.txLabel}>{key}:</Text>
-    //                                     {/* Check if value is not null before rendering */}
-    //                                     {value !== null && typeof value === 'object' ? (
-    //                                         <View style={styles.subObject}>
-    //                                             <Text style={styles.subObjectHeader}>{key}</Text>
-    //                                             {Object.entries(value).map(([subKey, subValue], subIdx) => {
-    //                                                 const truncatedSubValue = typeof subValue === 'string' && subValue.length > 50 ? `${subValue.slice(0, 50)}...` : subValue;
-    //                                                 // Check if subValue is an array
-    //                                                 if (Array.isArray(subValue)) {
-    //                                                     // Check the length of the array
-    //                                                     if (subValue.length > 5) {
-    //                                                         return (
-    //                                                             <Text key={subIdx} style={styles.txValue}>{`${subKey}: ${subValue.slice(0, 5).join(', ')}, ...`}</Text>
-    //                                                         );
-    //                                                     } else {
-    //                                                         return (
-    //                                                             <Text key={subIdx} style={styles.txValue}>{`${subKey}: ${subValue.join(', ')}`}</Text>
-    //                                                         );
-    //                                                     }
-    //                                                 } else if (typeof subValue === 'object') {
-    //                                                     return (
-    //                                                         <View key={subIdx} style={styles.subObject}>
-    //                                                             <Text style={styles.subObjectHeader}>{subKey}</Text>
-    //                                                             {Object.entries(subValue).map(([innerSubKey, innerSubValue], innerSubIdx) => (
-    //                                                                 <Text key={innerSubIdx} style={styles.txValue}>{`${innerSubKey}: ${innerSubValue}`}</Text>
-    //                                                             ))}
-    //                                                         </View>
-    //                                                     );
-    //                                                 } else {
-    //                                                     return (
-    //                                                         <Text key={subIdx} style={styles.txValue}>{`${subKey}: ${truncatedSubValue}`}</Text>
-    //                                                     );
-    //                                                 }
-    //                                             })}
-    //                                         </View>
-    //                                     ) : (
-    //                                         <Text style={styles.txValue}>
-    //                                             {typeof value === 'string' && value.length > 100 ? `${value.slice(0, 100)}...` : value}
-    //                                         </Text>
-    //                                     )}
-    //                                 </View>
-    //                             );
-    //                         })}
-    //                     </View>
-    //                 ))}
-    //             </ScrollView>
-    //         );
-    //     } catch (error) {
-    //         console.error('Error rendering transaction details:', error);
-    //         return null;
-    //     }
-    // };
-
-
-    //
     const renderTxDetails = () => {
         if (!transaction || !transaction.tx) {
             return null;
@@ -337,6 +217,8 @@ const Nebb = () => {
     const [inputType, setInputType] = useState("");
     const [inputTypeSearch, setInputTypeSearch] = useState("");
     const [dataWallet, setDataWallet] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+
     const fetchPlayerByAddress = async (playerAddress) => {
         try {
             const response = await axios.get(`https://it.api.namada.red/api/v1/player/search/${playerAddress}?player_kind=Crew`);
@@ -368,17 +250,41 @@ const Nebb = () => {
         try {
             const response = await axios.get(`http://explorer.testnet.one/transactions.php?address=${wallet}&mode=transactions&sort=7&ascdesc=desc&from=&to=&range=wallets_incoming`);
             const html = response.data;
-            const $ = cheerio.load(html);
-            const extractedData = [];
-            // Tìm và trích xuất thông tin SE-moniker/class
-            const seMonikerRow = $('body').filter((index, element) => {
-                return $(element).text().includes('SE-moniker/class:');
-            });
-            const seMonikerText = seMonikerRow.text();
-            const seMoniker = seMonikerText.includes('SE-moniker/class:') ? seMonikerText.split('SE-moniker/class:')[1].trim() : '';
-            const seMonikerLines = seMoniker.split('\n').slice(0, 4);
-            const seMonikerFinal = seMonikerLines.join('\n').trim();
+
+            const regex = /<\/form>(.*?)<table>/s; // Biểu thức chính quy để tìm và lấy văn bản
+
+            const match = html.match(regex); // Tìm văn bản phù hợp với biểu thức chính quy
+            let seMonikerLines =[];
+            if (match) {
+                const extractedText = match[1].trim(); // Lấy văn bản và loại bỏ các khoảng trắng thừa
+                // console.log("REGEX", extractedText);
+                const parts = extractedText.split(/<br>/);
+
+                // Loại bỏ các phần rỗng (có thể xảy ra nếu có dấu <br> liên tục)
+                const filteredParts = parts.filter(part => part.trim() !== '');
+                seMonikerLines = filteredParts.map(part => part.replace(/<[^>]*>/g, ''));
+                
+            } else {
+                console.log("Không tìm thấy phù hợp.");
+            }
             let extractedData_split = [];
+            let extractedData = [];
+            // console.log("==========HTML==========", html);
+            // const $ = cheerio.load(html);
+            // const extractedData = [];
+            // // Tìm và trích xuất thông tin SE-moniker/class
+            // const seMonikerRow = $('body').filter((index, element) => {
+            //     return $(element).text().includes('SE-moniker/class:');
+            // });
+            // const seMonikerText = seMonikerRow.text();
+            // const seMoniker = seMonikerText.includes('SE-moniker/class:') ? seMonikerText.split('SE-moniker/class:')[1].trim() : '';
+            // const seMonikerLines = seMoniker.split('\n').slice(0, 4);
+            // const seMonikerFinal = seMonikerLines.join('\n').trim();
+            // let extractedData_split = [];
+
+
+
+            // console.log(seMonikerLines);
             // Kiểm tra xem data có tồn tại và có phải là mảng không
             //Hash : cbdd305afe971a9595806efdbc8616a3
             if (Array.isArray(seMonikerLines) && seMonikerLines.length > 0) {
@@ -386,10 +292,11 @@ const Nebb = () => {
                     // Kiểm tra xem item có tồn tại và có thể chia thành mảng không
                     if (typeof item === 'string') {
                         // Tách chuỗi thành các phần riêng biệt bằng các điểm chia
-                        const parts = item.split(/(Wallet:|Transactions sent:|Transactions received:|Total amount sent:|Total amount received:|Number of wallet sent to:|Number of wallets received from:)/);
+                        const parts = item.split(/(SE-moniker\/class:|Wallet:|Transactions sent:|Transactions received:|Total amount sent:|Total amount received:|Number of wallet sent to:|Number of wallets received from:)/);
+
 
                         // Loại bỏ các phần tử rỗng và nối vào mảng kết quả
-                        extractedData_split = extractedData_split.concat(parts.filter(part => part.trim() !== "" && !part.includes("Wallet:") && !part.includes("Transactions sent:") && !part.includes("Transactions received:") && !part.includes("Total amount sent:") && !part.includes("Total amount received:") && !part.includes("Number of wallet sent to:") && !part.includes("Number of wallets received from:")));
+                        extractedData_split = extractedData_split.concat(parts.filter(part => part.trim() !== "" && !part.includes("SE-moniker/class:") && !part.includes("Wallet:") && !part.includes("Transactions sent:") && !part.includes("Transactions received:") && !part.includes("Total amount sent:") && !part.includes("Total amount received:") && !part.includes("Number of wallet sent to:") && !part.includes("Number of wallets received from:")));
                     } else {
                         console.error('Invalid data format: Expected string but received', typeof item);
                     }
@@ -403,42 +310,42 @@ const Nebb = () => {
             // Hiển thị thông tin tương ứng
             extractedData.push(
 
-                <View>
-                    <View style={{ flexDirection: 'row' }}>
+                <View key="wallet-tracking">
+                    <View key="Moniker" style={{ flexDirection: 'row' }}>
                         <Text style={styles.headerWallet} key="walletTitle">Moniker:</Text>
                         <Text style={{ color: "white" }} key="walletValue">{extractedData_split[0]}</Text>
                     </View>
-                    <View style={{ flexDirection: 'row' }}>
+                    <View key="Wallet" style={{ flexDirection: 'row' }}>
                         <Text style={styles.headerWallet} key="walletTitle">Wallet:</Text>
                         <Text style={{ color: "white" }} key="walletValue">{extractedData_split[1]}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row' }}>
+                    <View key="sent" style={{ flexDirection: 'row' }}>
                         <Text style={styles.headerWallet} key="transactionsSentTitle">Transactions sent:</Text>
                         <Text style={{ color: "white" }} key="transactionsSentValue">{extractedData_split[2]}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row' }}>
+                    <View key="received" style={{ flexDirection: 'row' }}>
                         <Text style={styles.headerWallet} key="transactionsReceivedTitle">Transactions received:</Text>
                         <Text style={{ color: "white" }} key="transactionsReceivedValue">{extractedData_split[3]}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row' }}>
+                    <View key="NaanSent" style={{ flexDirection: 'row' }}>
                         <Text style={styles.headerWallet} key="totalAmountSentTitle">Total Naan sent:</Text>
                         <Text style={{ color: "white" }} key="totalAmountSentValue">{extractedData_split[4]}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row' }}>
+                    <View key="NaanReceived" style={{ flexDirection: 'row' }}>
                         <Text style={styles.headerWallet} key="totalAmountReceivedTitle">Total Naan received:</Text>
                         <Text style={{ color: "white" }} key="totalAmountReceivedValue">{extractedData_split[5]}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row' }}>
+                    <View key="interactedsent" style={{ flexDirection: 'row' }}>
                         <Text style={styles.headerWallet} key="numberOfWalletsSentToTitle">Number of wallets interacted(sent to):</Text>
                         <Text style={{ color: "white" }} key="numberOfWalletsSentToValue">{extractedData_split[6]}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row' }}>
+                    <View key="interactedreceived" style={{ flexDirection: 'row' }}>
                         <Text style={styles.headerWallet} key="numberOfWalletsReceivedFromTitle">Number of wallets interacted with(received from):</Text>
                         <Text style={{ color: "white" }} key="numberOfWalletsReceivedFromValue">{extractedData_split[7]}</Text>
                     </View>
@@ -473,26 +380,29 @@ const Nebb = () => {
     };
 
     const handleSearch = async () => {
+        setIsLoading(true); // Set loading state to true
         const inputTypeSearch = detectInputType(searchText);
         if (inputTypeSearch === "player") {
-            // Xử lý nếu đầu vào là loại "player"
-            fetchPlayerByAddress(searchText);
+            fetchPlayerByAddress(searchText)
+                .finally(() => setIsLoading(false)); // Set loading state to false after fetching data
         } else if (inputTypeSearch === "hash") {
-            // Xử lý nếu đầu vào là loại "hash"
-            fetchTransactionData(searchText);
+            fetchTransactionData(searchText)
+                .finally(() => setIsLoading(false)); // Set loading state to false after fetching data
         }
         else {
+            setIsLoading(false); // Set loading state to false
             Toast.show('Please Enter (tx hash | tnam | tpknam)', Toast.SHORT);
         }
     };
     const handleTrackingWallet = async () => {
+        setIsLoading(true); // Set loading state to true
         const inputTypeSearch = detectInputTypeTracking(searchText);
         if (inputTypeSearch === "wallet") {
-            // Xử lý nếu đầu vào là loại "wallet"
-            fetchDataWallet(searchText);
+            fetchDataWallet(searchText)
+                .finally(() => setIsLoading(false)); // Set loading state to false after fetching data
         } else {
+            setIsLoading(false); // Set loading state to false
             Toast.show('Please Enter Wallet (tnam...)', Toast.SHORT);
-
         }
     };
 
@@ -511,6 +421,7 @@ const Nebb = () => {
     const renderLoading = () => {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="large" color="#FFFF00" />
                 <Text>Loading...</Text>
             </View>
         );
@@ -543,7 +454,7 @@ const Nebb = () => {
                         style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 10, padding: 5, backgroundColor: '#FFFF00', borderRadius: 5 }}
                         onPress={handleSearch}
                     >
-                        <View style={{  alignItems: 'center', justifyContent: "center", flexDirection: "row" }}>
+                        <View style={{ alignItems: 'center', justifyContent: "center", flexDirection: "row" }}>
                             <Text style={{ alignItems: 'center', justifyContent: 'center', color: "#000" }}>Search  </Text>
                             <Icon name="search" size={25} color="#000" />
                         </View>
@@ -552,13 +463,14 @@ const Nebb = () => {
                         style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 10, padding: 5, backgroundColor: '#FFFF00', borderRadius: 5 }}
                         onPress={handleTrackingWallet}
                     >
-                        <View style={{  alignItems: 'center', justifyContent: "center", flexDirection: "row" }}>
+                        <View style={{ alignItems: 'center', justifyContent: "center", flexDirection: "row" }}>
                             <Text style={{ alignItems: 'center', justifyContent: 'center', color: "#000" }}>Tracking  </Text>
                             <Icon name="account-balance-wallet" size={25} color="#000" />
                         </View>
                     </TouchableOpacity>
                 </View>
             </View>
+            {isLoading && renderLoading()}
             <View style={{
                 flex: 2
             }}>

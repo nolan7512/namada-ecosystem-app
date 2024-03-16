@@ -6,15 +6,6 @@ import {
     StyleSheet, Image, ScrollView
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'; // Import thư viện icon MaterialIcons
-const technologies =
-    [
-        'React Native',
-        'JavaScript',
-        'Node.js',
-        'Express',
-        'MongoDB'
-    ];
-
 const API = "https://api.nodejom.xyz";
 const Token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDcwODQzNjMsImV4cCI6MTcxNzQ1MjM2M30.4Fk2-GpkRKK7SiTN4AgpmLUWUGTidBDYcIe-U_tacaE";
@@ -81,7 +72,7 @@ const fetchDataInterval = (
                     setTransparentTransfer,
                     setShieldedTransfer
                 );
-                return 15;
+                return 30;
             } else {
                 return prevCountdown - 1;
             }
@@ -99,40 +90,7 @@ const Home = () => {
     const [totalStake, setTotalStake] = useState("");
     const [transparentTransfer, setTransparentTransfer] = useState("");
     const [shieldedTransfer, setShieldedTransfer] = useState("");
-    const [countdown, setCountdown] = useState(15);
-
-    // useEffect(() => {
-    //     const fetchOverview = async () => {
-    //         try {
-    //             const overviewResponse = await axios.get(`${API}/overview`, {
-    //                 headers: {
-    //                     Authorization: "Bearer " + Token,
-    //                 },
-    //             });
-    //             const data = overviewResponse.data.data;
-    //             setEpoch(data.epoch);
-    //             setLatestBlock(data.last_height);
-    //             setBlockTime(data.avg_blocktime);
-    //             setActiveValidator(data.nb_validators);
-    //             setTotalStake(data.total_stake);
-    //         } catch (error) {
-    //             console.error("Error fetching overview:", error);
-    //         }
-    //     };
-
-    //     const fetchOther = async () => {
-    //         try {
-    //             const otherResponse = await axios.get(`${API2}/chain/info`);
-    //             setTransparentTransfer(otherResponse.data.total_transparent_txs);
-    //             setShieldedTransfer(otherResponse.data.total_shielded_txs);
-    //         } catch (error) {
-    //             console.error("Error fetching other info:", error);
-    //         }
-    //     };
-
-    //     fetchOverview();
-    //     fetchOther();
-    // }, []);
+    const [countdown, setCountdown] = useState(30);
 
     useEffect(() => {
         const cleanupInterval = fetchDataInterval(
@@ -147,23 +105,6 @@ const Home = () => {
         );
         return () => cleanupInterval();
     }, []);
-
-    const renderTechBoxes = () => {
-        return (
-            <View style={styles.techContainer}>
-                {technologies
-                    .map((tech, index) => (
-                        <View key={index}
-                            style={styles.techBox}>
-                            <Text style={styles.techText}>
-                                {tech}
-                            </Text>
-                        </View>
-                    ))}
-            </View>
-        );
-    };
-
     return (
         <ScrollView>
             <View style={styles.container}>
